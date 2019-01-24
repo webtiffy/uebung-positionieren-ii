@@ -19,6 +19,7 @@ section{
 	border-bottom: 1px solid #000;
 	height: 600px;
 	margin-top: 2rem;
+	position: relative; /*Ist weiterhin Chef der anderen nachdem sie eine absolute position bekommen haben, ist Chef der absoluten aber nicht vbon fixed*/
 
 }
 
@@ -38,20 +39,32 @@ section{
 
 .electric-purple{
 	background: #C200FB;
+	position: absolute; /*Befehl das nun etwas angehoben und verschoben wird, mit den nachfolgenden Codes sage ich wo es nun hin soll*/
+	top: 0; /*Kommt dann gaaaanz in die Ecke, so weit an den Rand wie es geht, denn ich habe keine Info wer der Chef ist. Muss da wo der Chef ist, position: relative; eingeben. Habe ich in dem Fall bei section hingeschrieben*/
+	right: 0;
+	z-index: 2; /*Muss größer sein als 1 von rasperry, daher 2 bzw. irgendwas größeres*/
 }
 
 .raspberry{
 	background: #EC0868;
+	position: absolute;
+	bottom: 0px; /*Gegenteil von top*/
+	right: 0px;
+	z-index: 1; /*Liegt über ferrari-red obwohl es nicht als letztes genannt wird. Geben daher Code, dass rasperry drüber liegt und 1 überlappt, z-index weil es irgendwie um die z-Achse geht*/
 
 }
 
 .ferrari-red{
 	background: #FC2F00;
-
-
+	position: absolute;
+	right: 50px; /*50px vom rechte Rand entfernt und überlagert electric-purple (also legt sich über das erste und zweite weil es in html Nummer 3 ist und daher ganz oben liegt, legen nun rasperry drüber und geben dazu Code an---siehe rasperry)*/
+	top: 50px; /*50px vom oberen Rand entfernt*/
+	z-index: 3; /*Nun soll das wieder ganz oben liegen und daher was größeres als 2 eingeben*/
 }
 
-.ferrari-red{
+.black{
 	background: #000;
-
+	position: fixed; /*Wenn man scrollt bleibt das Ding stehen, es gibt bei fixed keinen Chef "Chef ist die Decke"*/
+	top: 0;
+	left: 0;
 }
